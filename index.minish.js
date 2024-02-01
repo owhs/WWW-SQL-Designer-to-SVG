@@ -1,11 +1,12 @@
-((D=document,_NS = "http://www.w3.org/2000/svg",S="style",R="rect",s="slice",f="fill",W="width",H="height",L="left",q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML") => {
+((D=document,_NS = "http://www.w3.org/2000/svg",S="style",R="rect",s="slice",f="fill",W="width",H="height",L="left",
+q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cloneNode",X="removeAttribute") => {
 
     var _round = x => +(+x).toFixed(1),
         E = dn=>D.createElementNS(_NS, dn),
         A = (el,att,v,R)=>el.setAttribute(att,R ? _round(v) : v),
         O = (el,o)=>el["offset"+o[0].toUpperCase()+o[s](1)],
         AP = (el,w)=>el.append(w),
-        svg = D[q]("#area>svg").cloneNode(1),
+        svg = D[q]("#area>svg")[C](1),
         style = E(S);
 
     A(svg,"xmlns", _NS);
@@ -98,12 +99,12 @@
     A(outp,"style", "position:fixed;opacity:0;width:0px;height:0px;overflow:hidden;inset:0;border:0");
     AP(D.body,outp), padding = 20;
     var _D = outp.contentWindow.document;
-    AP(_D.body,svg.cloneNode(1));
+    AP(_D.body,svg[C](1));
 
     var box = _D[q]("svg").getBBox();
     if (box) {
-        svg.removeAttribute(W);
-        svg.removeAttribute(H);
+        svg[X](W);
+        svg[X](H);
         A(svg,"viewBox",[box.x - padding, box.y - padding, box[W] + (padding*2), box[H] + (padding*2)].join(" "));
     }
     outp.remove();
@@ -115,5 +116,3 @@
     URL.revokeObjectURL(url)
     //svg.outerHTML
 })()
-
-
