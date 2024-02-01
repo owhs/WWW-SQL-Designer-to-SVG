@@ -113,7 +113,7 @@ q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cl
         type: "image/svg+xml"
     }));
     window.open(url);
-    URL.revokeObjectURL(url)
+    //URL.revokeObjectURL(url)
     //svg.outerHTML
 })()
 
