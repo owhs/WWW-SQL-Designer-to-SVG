@@ -1,8 +1,8 @@
 ((D=document,_NS = "http://www.w3.org/2000/svg",S="style",R="rect",s="slice",f="fill",W="width",H="height",L="left",
-q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cloneNode",X="removeAttribute") => {
+q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cloneNode",X="removeAttribute",N="createElement") => {
 
     var _round = x => +(+x).toFixed(1),
-        E = dn=>D.createElementNS(_NS, dn),
+        E = dn=>D[N+"NS"](_NS, dn),
         A = (el,att,v,R)=>el.setAttribute(att,R ? _round(v) : v),
         O = (el,o)=>el["offset"+o[0].toUpperCase()+o[s](1)],
         AP = (el,w)=>el.append(w),
@@ -95,8 +95,8 @@ q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cl
     });
 
 
-    var outp = D.createElement("iframe");
-    A(outp,"style", "position:fixed;opacity:0;width:0px;height:0px;overflow:hidden;inset:0;border:0");
+    var outp = D[N]("iframe");
+    A(outp,S, "position:fixed;opacity:0;width:0px;height:0px;overflow:hidden;inset:0;border:0");
     AP(D.body,outp), padding = 20;
     var _D = outp.contentWindow.document;
     AP(_D.body,svg[C](1));
@@ -116,3 +116,5 @@ q="querySelector",Q="querySelectorAll",F="forEach",T="title",I="innerHTML",C="cl
     URL.revokeObjectURL(url)
     //svg.outerHTML
 })()
+
+
