@@ -1,6 +1,6 @@
 # WWW-SQL-Designer-to-SVG 🚀
 
-Welcome to the WWW-SQL-Designer-to-SVG repository – a JavaScript tool for effortless SVG exports of MySQL database schemas designed using [SQL Designer](https://sql.toad.cz) by [Ondrej Zara](https://github.com/ondras).
+Welcome to the WWW-SQL-Designer-to-SVG repository – a JavaScript tool for effortless SVG exports of database schemas designed using [WWW-SQL-Designer](https://sql.toad.cz) by [Ondrej Zara](https://github.com/ondras).
 
 [Example ouput from default:](https://sql.toad.cz/?keyword=default)
 ![Example output diagram](default_example.svg)
