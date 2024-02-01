@@ -17,11 +17,9 @@ Welcome to the WWW-SQL-Designer-to-SVG repository – a JavaScript tool for effo
 
 - **Lightweight Bookmarklet**: A bookmarklet under 2KB for seamless integration into your browser.
 
-- **On-the-Fly Convenience**: No installations required – just drag the bookmarklet to your bookmarks bar.
-
 ## How to Use
 
-1. Visit [sql.toad.cz](https://sql.toad.cz) and create your MySQL database schema using SQL Designer.
+1. Visit [sql.toad.cz](https://sql.toad.cz) and create your database schema.
 
 2. Click the "WWW-SQL-Designer-to-SVG" bookmarklet in your bookmarks bar.
 
