@@ -86,7 +86,24 @@ document.querySelectorAll("#area>.table").forEach(el=>{
     svg.append(g);
 });
 
+//var url=URL.createObjectURL(new Blob([svg.outerHTML],{type:"image/svg+xml"}));
+//window.open(url);
+//URL.revokeObjectURL(url)
+//svg.outerHTML
+
+var outp=document.createElement("iframe");
+outp.setAttribute("style","position: fixed;opacity: 0;width: 0px;height: 0px;overflow: hidden;inset: 0;border: 0;");
+document.body.append(outp)
+outp.contentWindow.document.body.append(svg.cloneNode(1));
+var box = outp.contentWindow.document.querySelector("svg").getBBox();
+if (box){
+    svg.removeAttribute("width");
+    svg.removeAttribute("height");
+    svg.setAttribute("viewBox",[box.x - 20, box.y - 20, box.width+40, box.height+40].join(" "));
+}
+outp.remove();
+//document.body.getBoundingClientRect
+
 var url=URL.createObjectURL(new Blob([svg.outerHTML],{type:"image/svg+xml"}));
 window.open(url);
 URL.revokeObjectURL(url)
-//svg.outerHTML
