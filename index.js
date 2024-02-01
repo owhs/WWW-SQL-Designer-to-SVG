@@ -106,4 +106,4 @@ outp.remove();
 
 var url=URL.createObjectURL(new Blob([svg.outerHTML],{type:"image/svg+xml"}));
 window.open(url);
-URL.revokeObjectURL(url)
+//URL.revokeObjectURL(url)
