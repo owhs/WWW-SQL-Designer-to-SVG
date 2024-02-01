@@ -3,6 +3,7 @@
     var _round = x => +(+x).toFixed(1),
         E = dn=>document.createElementNS(_NS, dn),
         A = (el,att,v)=>el.setAttribute(att,v),
+        AP = (el,w)=>el.append(w),
         svg = document.querySelector("#area>svg").cloneNode(1),
         style = E("style");
 
@@ -21,12 +22,14 @@
             ELT = _round(el.offsetTop),
             ELW = _round(el.offsetWidth);
 
+        
         A(rect,"x", ELL);
         A(rect,"y", ELT);
         A(rect,"width", ELW);
         A(rect,"height", _round(el.offsetHeight));
 
-        g.append(rect);
+
+        AP(g,rect);
 
         [...el.querySelectorAll("tr")].forEach((t, i) => {
             var rg = E("g"),
@@ -51,8 +54,8 @@
 
             text.innerHTML = v;
 
-            rg.append(text);
-            g.append(rg);
+            AP(rg,text);
+            AP(g,rg);
 
             if (i === 0) {
                 var title = t.querySelector("td").title;
@@ -62,33 +65,33 @@
 
                     var tt = E("title");
                     tt.innerHTML = title;
-                    rg.append(r2);
-                    rg.append(tt);
+                    AP(rg,r2);
+                    AP(rg,tt);
                 }
 
                 A(text,"x", _round(ELL + (ELW / 2) - (+(v.length * 6.2) / 2)));
                 A(text,"y", _round(ELT + TT + 18));
             } else {
-                var color = t.parentElement.style.borderColor.slice(4, -1).split(", ").map(x => (x ? +x : "").toString(16)).join(""),
-                    title = t.parentElement.title;
+                var p = t.parentElement,color = p.style.borderColor.slice(4, -1).split(", ").map(x => (x ? +x : "").toString(16)).join(""),
+                    title = p.title;
                 if (color) {
                     A(r,"fill", "#" + color);
-                    rg.append(r)
+                    AP(rg,r)
                 }
                 if (title) {
                     A(r2,"x", _round(ELL + ELW - 16));
                     A(r2,"y", _round(ELT + TT + ((TH - 8) / 2)));
                     var tt = E("title");
                     tt.innerHTML = title;
-                    rg.append(r2);
-                    rg.append(tt);
+                    AP(rg,r2);
+                    AP(rg,tt);
                 }
                 A(text,"x", _round(ELL + t.offsetLeft + 10));
                 A(text,"y", _round(ELT + TT + 15));
             }
 
         });
-        svg.append(g);
+        AP(svg,g);
     });
 
     var url = URL.createObjectURL(new Blob([svg.outerHTML], {
